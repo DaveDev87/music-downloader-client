@@ -3,12 +3,17 @@
 
     export let text = "Button";
     export let disabled = false;
+    export let secondaryColor = "#a4cdf3";
+    export let primaryColor = "#0585fd";
     let buttonRef;
 
     const dispatch = createEventDispatcher();
 
     onMount(() => {
         buttonRef.addEventListener("mousemove", handleMouse);
+        buttonRef.style.setProperty("--secondary", secondaryColor);
+        buttonRef.style.setProperty("--secondary-faded", secondaryColor + "00");
+        buttonRef.style.setProperty("--primary", primaryColor);
     });
 
     onDestroy(() => {
@@ -58,7 +63,10 @@
         left: calc(var(--x, 0) * 1px - 115px);
         width: 220px;
         height: 220px;
-        background: radial-gradient(#a4cdf3, #a4cdf300 100%);
+        background: radial-gradient(
+            var(--secondary),
+            var(--secondary-faded) 100%
+        );
         border-radius: 25px;
 
         opacity: 0;
@@ -70,8 +78,8 @@
         -moz-box-shadow: 0px 4px 10px 0px rgba(171, 171, 171, 1);
         box-shadow: 0px 4px 10px 0px rgba(171, 171, 171, 1);
         transition: all 0.25s ease-in-out;
-        border: 2px solid #0585fd;
-        color: #0585fd;
+        border: 2px solid var(--primary);
+        color: var(--primary);
     }
 
     .shiny:hover::after {

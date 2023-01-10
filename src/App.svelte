@@ -1,4 +1,21 @@
 <script>
+import { onMount } from "svelte";
+import store from './stores/store'
+
+let messages = []
+onMount(() => {
+  store.subscribe(msg=> {
+    messages = [...messages, msg]
+  })
+})
+</script>
+
+<main>
+  <h1>Hola</h1>
+</main>
+
+
+<!-- <script>
   import Searchbar from "./lib/Searchbar.svelte";
   import Card from "./lib/Card.svelte";
   import ButtonComponent from "./components/ButtonComponent.svelte";
@@ -30,6 +47,7 @@
         return response.json();
       })
       .then((data) => {
+        console.log(data)
         videoData = data;
         disabled = false;
       })
@@ -38,39 +56,6 @@
         disabled = false;
       });
   }
-
-  //   async function downloadVideo(id) {
-  //       const config = {
-  //           method: "POST",
-  //       };
-  //       let filename = "song.mp4";
-  //       try {
-  //           fetch(`http://localhost:8080/video/${id}`, config)
-  //               .then((result) => {
-  //                   if (!result.ok) {
-  //                       throw Error(result.statusText);
-  //                   }
-
-  //                   const header = result.headers.get("content-disposition");
-  //                   console.log("El header: ", header);
-
-  //                   return result.blob();
-  //               })
-  //               .then((blob) => {
-  //                   if (blob != null) {
-  //                       let url = window.URL.createObjectURL(blob);
-  //                       let a = document.createElement("a");
-  //                       a.href = url;
-  //                       a.download = filename;
-  //                       document.body.appendChild(a);
-  //                       a.click();
-  //                       a.remove();
-  //                   }
-  //               });
-  //       } catch (e) {
-  //           console.error(e);
-  //       }
-  //   }
 </script>
 
 <main class="h-screen">
@@ -99,4 +84,4 @@
       </div>
     {/if}
   </div>
-</main>
+</main> -->
