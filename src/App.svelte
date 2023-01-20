@@ -1,21 +1,4 @@
 <script>
-import { onMount } from "svelte";
-import store from './stores/store'
-
-let messages = []
-onMount(() => {
-  store.subscribe(msg=> {
-    messages = [...messages, msg]
-  })
-})
-</script>
-
-<main>
-  <h1>Hola</h1>
-</main>
-
-
-<!-- <script>
   import Searchbar from "./lib/Searchbar.svelte";
   import Card from "./lib/Card.svelte";
   import ButtonComponent from "./components/ButtonComponent.svelte";
@@ -47,7 +30,7 @@ onMount(() => {
         return response.json();
       })
       .then((data) => {
-        console.log(data)
+        console.log(data);
         videoData = data;
         disabled = false;
       })
@@ -84,4 +67,4 @@ onMount(() => {
       </div>
     {/if}
   </div>
-</main> -->
+</main>
